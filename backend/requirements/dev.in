@@ -1,0 +1,24 @@
+-c prod.txt
+
+bandit
+black
+boltons
+darglint
+defusedxml
+flake8
+flake8-annotations
+flake8-bandit
+flake8-bugbear
+flake8-black
+flake8-docstrings
+flake8-import-order
+httpx
+mypy
+pre-commit
+ruff
+shellcheck-py
+toml
+types-toml
+coverage[toml]
+pytest
+pytest-cov

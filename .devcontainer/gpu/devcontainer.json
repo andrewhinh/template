@@ -1,0 +1,9 @@
+{
+  "name": "GPU Development Environment",
+
+  "image": "template/development:latest",
+
+  "runArgs": ["--gpus", "all"],
+
+  "extensions": ["ms-python.python"]
+}

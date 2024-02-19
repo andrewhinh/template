@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Autofill text color */
+input:-webkit-autofill {
+  -webkit-line-1-fill-color: #71717a; /* zinc-500 */
+}
