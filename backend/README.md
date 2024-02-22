@@ -107,6 +107,60 @@ To run the backend locally:
 make dev
 ```
 
+To build the backend Docker image:
+
+- Local:
+
+  ```bash
+  make build
+  ```
+
+- Development:
+
+  ```bash
+  make build-dev
+  ```
+
+- Production:
+
+  ```bash
+  make build-prod
+  ```
+
+To run the backend Docker container:
+
+- Local:
+
+  ```bash
+  make run
+  ```
+
+- Development:
+
+  ```bash
+  make run-dev
+  ```
+
+- Production:
+
+  ```bash
+  make run-prod
+  ```
+
+To push the backend Docker image to the registry:
+
+- Development:
+
+  ```bash
+  make push-dev
+  ```
+
+- Production:
+
+  ```bash
+  make push-prod
+  ```
+
 To connect to the database:
 
 ```bash

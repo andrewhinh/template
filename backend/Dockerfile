@@ -16,4 +16,10 @@ ENV PYTHONPATH ".:"
 # Copy only the relevant directories
 #   note that we use a .dockerignore file to avoid copying logs etc.
 COPY app/ ./app
-COPY .env .env
+#   argument for specifying the environment file
+ARG ENV_FILE
+#   copy the specified environment file to .env
+COPY $ENV_FILE .env
+
+# Use docker run -it --rm to run the web server
+ENTRYPOINT ["gunicorn", "app.main:app", "--workers", "4", "--worker-class", "uvicorn.workers.UvicornWorker", "--bind", "0.0.0.0"]

@@ -37,7 +37,35 @@ test:
 
 # Run app
 dev:
-	python app/main.py
+	sudo -u postgres psql -c "SELECT 1 FROM pg_database WHERE datname = 'template'" | grep -q 1 || sudo -u postgres createdb template; python app/main.py
+
+# Login to Docker
+login:
+	env $(cat ../.env | xargs) docker login -u "$$DOCKERHUB_USERNAME" --password "$$DOCKERHUB_PASSWORD"
+
+# Build Docker image
+build:
+	docker build --build-arg ENV_FILE=.env -t andrewhinh/template:local-latest .
+build-dev:
+	docker build --build-arg ENV_FILE=.env.development -t andrewhinh/template:dev-latest .
+build-prod:
+	docker build --build-arg ENV_FILE=.env.production -t andrewhinh/template:prod-latest .
+
+# Run Docker image
+run:
+	docker run -p 8000:8000 andrewhinh/template:local-latest
+run-dev:
+	docker run -p 8000:8000 andrewhinh/template:dev-latest
+run-prod:
+	docker run -p 8000:8000 andrewhinh/template:prod-latest
+
+# Push Docker image
+push-dev:
+	make login
+	docker push andrewhinh/template:dev-latest
+push-prod:
+	make login
+	docker push andrewhinh/template:prod-latest
 
 # Connect to database
 db:
